@@ -102,7 +102,39 @@ namespace Control_Vista.Controllers
         }
         public string Dispensar2(int monto)
         {
-            string resultado = "s";
+            string resultado = "";
+            int papeletas500 = 0;
+            int papeletas100 = 0;
+            if (monto > 0)
+            {
+                if (monto % 100 == 0 || monto % 500 == 0)
+                {
+
+                    papeletas500 = (int)(monto / 500);
+
+                    if (papeletas500 > 0)
+                    {
+                        monto = monto - (papeletas500 * 500);
+                    }
+
+                    papeletas100 = (int)(monto / 100);
+
+
+                    resultado = $"Se han dispensado {papeletas500} peletas de 500 y " +
+                        $"{papeletas100} papeletas de 100";
+
+                }
+                else
+                {
+                    resultado = "Este cajero solo dispensa papeletas de 500 y 100";
+                }
+            }
+
+            else
+            {
+                resultado = "Ingrese un monto valido";
+            }
+
 
             return resultado;
         }
