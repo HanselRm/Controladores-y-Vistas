@@ -20,26 +20,36 @@ namespace Control_Vista.Controllers
         [HttpPost]
         public IActionResult Calcular(int monto, string modo)
         {
-            var resultado = "";
-            switch (modo.ToLower())
+            string resultado = "";
+            if (monto != 0)
             {
-                case "modo1":
-                    resultado = Dispensar1(monto);
-                    break;
+                switch (modo.ToLower())
+                {
+                    case "modo1":
+                        resultado = Dispensar1(monto);
+                        break;
 
-                case "modo2":
-                    resultado = Dispensar2(monto);
-                    break;
+                    case "modo2":
+                        resultado = Dispensar2(monto);
+                        break;
 
-                case "modo3":
-                    resultado = Dispensar3(monto);
-                    break;
+                    case "modo3":
+                        resultado = Dispensar3(monto);
+                        break;
 
+                }
             }
+            else
+            {
+                resultado = "Ingrese un monto valido";
+            }
+            
+            
             return RedirectToAction("Resultado", new { resultado = resultado});
         }
         public IActionResult Resultado(string resultado)
         {
+            ViewBag.resultado = resultado;
             return View();
         }
         public IActionResult Consultar()
