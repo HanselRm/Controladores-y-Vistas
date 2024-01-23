@@ -6,20 +6,20 @@
 <h1>Cajero Automatico</h1>
 
 
-<div class="row col-5 mx-auto d-grid gap-2">
-        
-            <a asp-action="Error">
-                <button type="button" name="depositar" class="btn btn-primary">Depositar</button>
-            </a>
-            
-    
-            <a asp-action="Dispensacion"> 
-                <button  class="btn btn-primary">Modo de dispensacion</button>     
-            </a>
+<div class ="row mx-auto d-grid gap-2">
 
-            <a asp-action="Error">
-                <button type="button" name="consultarvalance" class="btn btn-primary">Consultar Valance</button>
-            </a>
+        <a asp-action="Error" class="row col-5 mx-auto ">
+            <button type="button" name="depositar" class="btn btn-primary">Depositar</button>
+        </a>
+
+
+        <a asp-action="Dispensacion" class="row col-5 mx-auto ">
+            <button  class="btn btn-primary">Modo de dispensacion</button>     
+        </a>
+
+        <a asp-action="Error" class="row col-5 mx-auto ">
+            <button type="button" name="consultarvalance" class="btn btn-primary">Consultar Valance</button>
+        </a>
             
 
     </div>
