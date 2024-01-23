@@ -20,6 +20,7 @@ namespace Control_Vista.Controllers
         [HttpPost]
         public IActionResult Calcular(int monto, string modo)
         {
+            ViewBag.modo = modo;
             string resultado = "";
             if (monto != 0)
             {
@@ -140,7 +141,63 @@ namespace Control_Vista.Controllers
         }
         public string Dispensar3(int monto)
         {
-            string resultado = "s";
+            string resultado = "";
+            int papeletas500 = 0;
+            int papeletas100 = 0;
+            int papeletas1000 = 0;
+            int papeletas200 = 0;
+
+            if (monto > 0)
+            {
+                if (monto % 100 == 0 || monto % 500 == 0 || monto % 1000 == 0 || monto % 200 == 0)
+                {
+
+                    papeletas1000 = (int)(monto / 1000);
+
+                    if (papeletas1000 > 0)
+                    {
+                        monto = monto - (papeletas1000 * 1000);
+                    }
+
+                    papeletas500 = (int)(monto / 500);
+
+                    if (papeletas500 > 0)
+                    {
+                        monto = monto - (papeletas500 * 500);
+                    }
+
+                    papeletas200 = (int)(monto / 200);
+
+                    if (papeletas200 > 0)
+                    {
+                        monto = monto - (papeletas200 * 200);
+                    }
+
+                    papeletas100 = (int)(monto / 100);
+
+                    if (papeletas100 > 0)
+                    {
+                        monto = monto - (papeletas100 * 100);
+                    }
+
+
+                    resultado = $"Se han dispensado {papeletas1000} peletas de 1000, " +
+                        $"{papeletas500} peletas de 500, " +
+                        $"{papeletas200} peletas de 200 y " +
+                        $"{papeletas100} papeletas de 100";
+
+                }
+                else
+                {
+                    resultado = "Este cajero solo dispensa papeletas de 1000, 500, 200 y 100";
+                }
+            }
+
+            else
+            {
+                resultado = "Ingrese un monto valido";
+            }
+
 
             return resultado;
         }
