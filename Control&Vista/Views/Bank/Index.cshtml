@@ -2,20 +2,28 @@
     ViewData["Title"] = "Index";
 *@
 
+
 <h1>Cajero Automatico</h1>
 
 
 <div class="row col-5 mx-auto d-grid gap-2">
         
-            <a asp-action=""
-            <button type="button" name="depositar" class="btn btn-primary">Depositar</button>
+            <a asp-action="Error">
+                <button type="button" name="depositar" class="btn btn-primary">Depositar</button>
+            </a>
+            
     
             <a asp-action="Dispensacion"> 
-        
-                <button  class="btn btn-primary">Modo de dispensacion</button> 
-    
+                <button  class="btn btn-primary">Modo de dispensacion</button>     
             </a>
-            <button type="button" name="consultarvalance" class="btn btn-primary">Consultar Valance</button>
+
+            <a asp-action="Error">
+                <button type="button" name="consultarvalance" class="btn btn-primary">Consultar Valance</button>
+            </a>
+            
 
     </div>
+
+
+
         
